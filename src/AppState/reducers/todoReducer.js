@@ -1,5 +1,5 @@
 import {nanoid} from 'nanoid'
-import {TYPE_CREATE_NEW, TYPE_TEXT_CHANGE} from "../actions/todoActions";
+import {TYPE_CREATE_NEW, TYPE_DELETE_TODO, TYPE_TEXT_CHANGE} from "../actions/todoActions";
 
 
 const initialState = {
@@ -37,6 +37,12 @@ export default function (state = initialState, action) {
                     }
                 ],
                 textValue: '',
+            }
+
+        case TYPE_DELETE_TODO:
+            return {
+                ...state,
+                todos : state.todos.filter((item)=> (item.id !== action.payload))
             }
         default : return state;
     }

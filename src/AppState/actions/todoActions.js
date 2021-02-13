@@ -2,6 +2,7 @@ import store from "../store";
 
 export const TYPE_TEXT_CHANGE = "text_change";
 export const TYPE_CREATE_NEW = "create_new";
+export const TYPE_DELETE_TODO = "delete_todo";
 
 
 export const createTodo = () => (dispatch) =>{
@@ -23,6 +24,13 @@ export const textChange = (v) => (dispatch) =>{
     dispatch({
         type : TYPE_TEXT_CHANGE,
         payload : v,
+    });
+};
+
+export const deleteTodo = (id) => (dispatch) =>{
+    dispatch({
+        type : TYPE_DELETE_TODO,
+        payload : id,
     });
 };
 
