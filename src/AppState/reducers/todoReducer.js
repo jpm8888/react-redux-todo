@@ -1,5 +1,5 @@
 import {nanoid} from 'nanoid'
-import {TYPE_CREATE_NEW, TYPE_DELETE_TODO, TYPE_TEXT_CHANGE} from "../actions/todoActions";
+import {TYPE_CREATE_NEW, TYPE_DELETE_TODO, TYPE_TEXT_CHANGE, TYPE_TOGGLE} from "../actions/todoActions";
 
 
 const initialState = {
@@ -9,10 +9,12 @@ const initialState = {
         {
             id : nanoid(10), //random generated id for length 10
             text : 'Buy milk',
+            done : false,
         },
         {
             id : nanoid(10),
             text : 'Finish sample application by Saturday',
+            done : true,
         },
     ]
 };
@@ -34,6 +36,7 @@ export default function (state = initialState, action) {
                     {
                         id : nanoid(10),
                         text : state.textValue,
+                        done : false,
                     }
                 ],
                 textValue: '',
@@ -43,6 +46,20 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 todos : state.todos.filter((item)=> (item.id !== action.payload))
+            }
+
+        case TYPE_TOGGLE:
+            return {
+                ...state,
+                todos : state.todos.map((item)=> {
+                    if (item.id === action.payload){
+                        return {
+                            ...item,
+                            done : !item.done
+                        }
+                    }
+                    return item;
+                })
             }
         default : return state;
     }
