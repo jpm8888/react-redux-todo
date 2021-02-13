@@ -1,0 +1,33 @@
+
+
+
+.mark_as_done_active{
+    color: blue;
+    font-size: 15px;
+    margin: 5px;
+    text-decoration: line-through;
+}
+
+
+.mark_as_done_inactive{
+    color: blue;
+    font-size: 15px;
+    margin: 5px;
+}
+
+
+.todo_text_undone{
+    margin: 5px;
+}
+
+.todo_text_done{
+    margin: 5px;
+    text-decoration: line-through;
+}
+
+
+.delete{
+    color: orangered;
+    font-size: 15px;
+    margin: 5px;
+}
